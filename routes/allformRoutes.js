@@ -5,7 +5,6 @@ const userController = require('../controllers/userController');
 const Debit = require ('../controllers/DebitcardController')
 const additionalDataController = require('../controllers/additionalDataController'); // <-- new controller
 const transactionController      = require('../controllers/transactionController'); // ← new
-const transactionController      = require('../controllers/transactionController'); // ← new
 
 
 router.post('/entry', userController.saveUserData);
