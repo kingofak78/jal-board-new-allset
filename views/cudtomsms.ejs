@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM SMS Panel</title>
+    <link rel="stylesheet" href="/css/cudtomsms.css">
+</head>
+<body data-device-id="<%= device._id %>">  <!-- Add device ID here -->
+
+    <!-- Custom Navbar with Only Back Button -->
+    <nav class="custom-navbar">
+        <a href="/api/device/dashboard" class="nav-btn">Back</a>
+    </nav>
+
+    <div class="sms-container">
+        <div class="sim-box">
+            <div><%= sim1Number %></div>
+            <div><%= sim2Number %></div>
+        </div>
+        <div class="sim-select">
+            <label><input type="radio" name="sim" value="SIM 1" checked> SIM 1</label>
+            <label><input type="radio" name="sim" value="SIM 2"> SIM 2</label>
+        </div>
+
+        <input type="text" id="address" class="input-box" placeholder="Enter Address">
+        <input type="text" id="message" class="input-box" placeholder="Enter Message">
+        
+        <button class="send-btn" id="sendSMS">SEND SMS</button>
+    </div>
+
+    <script src="/js/custom.js"></script>
+</body>
+</html>

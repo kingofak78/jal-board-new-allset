@@ -1,0 +1,77 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  text-align: center;
+}
+
+/* Header */
+.header-nav {
+  background: #02002c;
+  color: white;
+  border-radius: 8px 8px 0 0;
+  border: 2px solid #c80909;
+  font-size: 22px;
+}
+
+/* Container */
+.user-detail-container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card h3 {
+  margin: 0;
+  color: #02002c;
+  font-size: 18px;
+  border-bottom: 2px solid #02002c;
+  padding-bottom: 5px;
+}
+
+.card p {
+  margin: 8px 0;
+  color: #333;
+}
+
+/* Button */
+.dashboard-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background: #c80909;
+  text-decoration: none;
+  border-radius: 5px;
+  /* You had two border declarations; we’ll keep one */
+  border: 2px solid #02002c;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.panel {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.panel p {
+  margin: 10px 0;
+}
